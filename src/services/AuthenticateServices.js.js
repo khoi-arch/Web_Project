@@ -1,7 +1,6 @@
 const Freelancer = require('../models/freelancer');
 const Employer = require('../models/employer');
 const bcrypt = require('bcrypt');
-const freelancer = require('../models/freelancer');
 
 const RegisterFreelancer = (FreelancerData) => {
   return new Promise(async (resolve, reject) => {
@@ -44,7 +43,6 @@ const checkLogin = async (username, password) => {
   try {
     // Tìm người dùng theo tên người dùng (hoặc email)
     let user = await Freelancer.findOne({ username });
-
     if (!user) {
       const companyName = username;
       user = await Employer.findOne({ companyName });
