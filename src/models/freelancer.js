@@ -15,6 +15,6 @@ const freelancerSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-const freelancer = mongoose.model('freelance', freelancerSchema);
+const freelancer = mongoose.model('freelancer', freelancerSchema);
 
 module.exports = freelancer;
