@@ -21,7 +21,6 @@ const createUser = async (req,res) =>{
                 message: 'The input is required'
             })
         }
-        console.log('isCheckEmail',isCheckMail)
         const response = await EmployerService.createEmployer(req.body)
         return res.status(200).json(response)
     }
