@@ -6,9 +6,6 @@ const facebookLogin = passport.authenticate('facebook', { scope: ['email'] });
 
 const facebookCallback = passport.authenticate('facebook', { failureRedirect: '/login' })
 async (req, res) => {
-    // Đăng nhập thành công, bạn có thể thực hiện các hành động sau:
-    // 1. Lưu thông tin người dùng vào session
-    // 2. Chuyển hướng người dùng đến trang dashboard hoặc trang chính
     res.redirect('/dashboard');
   };
 

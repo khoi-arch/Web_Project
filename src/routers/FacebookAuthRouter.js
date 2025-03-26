@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/auth.controller');
+const authController = require('../controllers/Facebook_Auth');
 
 // Route để bắt đầu quá trình đăng nhập với Facebook
 router.get('/auth/facebook', authController.facebookLogin);
