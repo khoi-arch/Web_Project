@@ -4,7 +4,7 @@ const register = async (req, res) => {
   console.log('body req', req.body)
   try {
     const {
-      usertype,
+      role,
       username,
       password,
       fname,
@@ -22,15 +22,15 @@ const register = async (req, res) => {
       location
     } = req.body;
 
-    if (!usertype || !["employer", "freelancer"].includes(usertype)) {
+    if (!role || !["employer", "freelancer"].includes(role)) {
       console.log("Invalid user type. Must be 'employer' or 'freelancer");
       return res.status(400).json({
         status: "Error",
         message: "Invalid user type. Must be 'employer' or 'freelancer'.",
       });
     }
-
-    if (usertype === "freelancer") {
+    //Register as Freelancer
+    if (role === "freelancer") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const isCheckMail = emailRegex.test(email)
       console.log('isCheckEmail', isCheckMail)
@@ -45,8 +45,8 @@ const register = async (req, res) => {
       const response = await AuthenticateServices.RegisterFreelancer(req.body)
       return res.status(200).json(response)
     }
-
-    else if (usertype === "employer") {
+    //Register as Employer
+    else if (role === "employer") {
 
       console.log("em");
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -63,9 +63,8 @@ const register = async (req, res) => {
     }
   }
   catch (e) {
-    console.log('fail2')
     return res.status(404).json({
-      message: "fail"
+      message: "Username or email address already exists."
     })
   }
 }
